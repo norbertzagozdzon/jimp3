@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Section {
+class Section {
     private String title;
     private List<Paragraph> paragraps = new ArrayList<>();
     Section(String title) {
@@ -24,6 +24,11 @@ public class Section {
         paragraps.add(p);
         return this;
     }
-
-    void writeHTML(PrintStream out){}
+    void writeHTML(PrintStream out){
+        out.println("<div>\n<h2>"+title+"</h2>");
+        for(Paragraph i:paragraps) {
+            i.writeHTML(out);
+        }
+        out.println("</div>");
+    }
 }

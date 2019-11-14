@@ -2,15 +2,25 @@ package cv;
 
 import java.io.PrintStream;
 
-public class ParagraphWithList {
+class ParagraphWithList extends Paragraph {
     private String content;
-    UnorderedList uL = new UnorderedList();
-    ParagraphWithList(String paragraphText) {
-        this.content = paragraphText;
-    }
+    private UnorderedList uL = new UnorderedList();
+    ParagraphWithList() {}
     ParagraphWithList setContent(String content) {
         this.content = content;
         return this;
     }
-    void writeHTML(PrintStream out){}
+    ParagraphWithList(String paragraphText) {
+        super(paragraphText);
+    }
+    ParagraphWithList addListItem(String text) {
+        uL.add(new ListItem(text));
+        return this;
+    }
+    void writeHTML(PrintStream out){
+        if (content!=null) {
+            out.println("<p>"+content+"</p>");
+        }
+        uL.writeHTML(out);
+    }
 }
