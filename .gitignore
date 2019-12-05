@@ -1,0 +1,10 @@
+#ideafiles
+.idea/
+out/
+*.iml
+
+#clioncmakedebug
+cmake-build-debug/
+
+#matrxicalc
+matrixcalc/Debug/
